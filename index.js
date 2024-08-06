@@ -4,8 +4,8 @@ var cors = require('cors')
 const app = express();
 
 
-app.use(cors())
-app.use(express.json())
+app.use(cors()) // Cross-Origin Resource Sharing
+app.use(express.json()) // Automatically convertes our data into json format . 
 
 let movies = [
   {
@@ -118,7 +118,8 @@ let movies = [
   },
 ];
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000 ;
+
 app.get("/", function (request, response) {
   response.send("🙋‍♂️, 🌏 🎊✨🤩");
 }); // callback function
@@ -155,14 +156,6 @@ app.delete("/movies/:id", function (request, response) {
 // body -> json | Middleware
 // express.json() -> convert your body into JSON
 app.post("/movies", function (request, response) {
-  // const moviedata = {
-  //         "name": "PS2",
-  //     "poster": "https://m.media-amazon.com/images/M/MV5BYjFjMTQzY2EtZjQ5MC00NGUyLWJiYWMtZDI3MTQ1MGU4OGY2XkEyXkFqcGdeQXVyNDExMjcyMzA@._V1_.jpg",
-  //     "summary": "Ponniyin Selvan: I is an upcoming Indian Tamil-language epic period action film directed by Mani Ratnam, who co-wrote it with Elango Kumaravel and B. Jeyamohan",
-  //     "rating": 8,
-  //     "trailer": "https://www.youtube.com/embed/KsH2LA8pCjo",
-  //     "id": "110"
-  //   }
   const bodydata = request.body;
   bodydata.id = uuidv4();
   movies.push(bodydata);
