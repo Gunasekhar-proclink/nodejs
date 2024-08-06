@@ -1,6 +1,11 @@
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
+var cors = require('cors')
 const app = express();
+
+
+app.use(cors())
+app.use(express.json())
 
 let movies = [
   {
@@ -148,8 +153,8 @@ app.delete("/movies/:id", function (request, response) {
 
 // app.use(express.json())
 // body -> json | Middleware
-// convert your body into JSON
-app.post("/movies", express.json(), function (request, response) {
+// express.json() -> convert your body into JSON
+app.post("/movies", function (request, response) {
   // const moviedata = {
   //         "name": "PS2",
   //     "poster": "https://m.media-amazon.com/images/M/MV5BYjFjMTQzY2EtZjQ5MC00NGUyLWJiYWMtZDI3MTQ1MGU4OGY2XkEyXkFqcGdeQXVyNDExMjcyMzA@._V1_.jpg",
@@ -165,7 +170,7 @@ app.post("/movies", express.json(), function (request, response) {
 });
 
 
-app.put("/movies/:id" , express.json() , function(request , response){
+app.put("/movies/:id" , function(request , response){
     const bodydata = request.body ;
     const movieID = request.params.id ; 
     const movie = movies.find((m) => m.id == movieID);
