@@ -1,6 +1,22 @@
-// console.log("hello world ")
 
-// const double = (num) => num * 2 
+const variable = 'hello world '
+const double = (num) => num * 2 
+
+const variable1 = "Guna Sekhar"
+
+// named Export 
+export {double , variable }
+
+//Default Export - only one at a time 
+export default variable1 ; 
+
+
+
+
+
+
+
+
 
 // console.log(double(2))
 
@@ -24,7 +40,7 @@
 // console.log((Math.round(os.freemem() /1024 / 1024 / 1024) / Math.round(os.totalmem() /1024 / 1024 / 1024) ) * 100 + "%")
 // console.log(os.version()) ; 
 
-const os = require('os');
+// const os = require('os');
 
 
 // const freeMemGB = os.freemem() / 1024 ** 3;
